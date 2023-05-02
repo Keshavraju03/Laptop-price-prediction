@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <script defer src="{{url_for('static',filename='script.js')}}"></script>
+    <title>Laptop Price Predictor</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title">Laptop Price Predictor</div>
+        <form action="/" method="POST" id="lap-form" onsubmit="return checkForm(this);">
+            <div class="form">
+                <div class="inputfield">
+                    <label for="ram">Ram (GB)</label>
+                    <input class="input" type="text" name="ram" id="ram">
+                </div>
+                <div class="inputfield">
+                    <label for="HDD">HDD</label>
+                    <input class="input" type="text" name="HDD" id="HDD">
+                </div>
+                <div class="inputfield">
+                    <label for="SSD">SSD</label>
+                    <input class="input" type="text" name="SSD" id="SSD">
+                </div>
+
+
+                <div class="inputfield ">
+                    <label for="ScreenSize">ScreenSize</label>
+                    <div class="custom_select">
+                        <select name="ScreenSize" id="ScreenSize">
+                            <option value="" selected hidden>Select</option>
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="17">17</option>
+                            <option value="24">24</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inputfield ">
+                    <label for="company">Company</label>
+                    <div class="custom_select">
+                        <select name="company" id="company">
+                            <option value="" selected hidden>Select</option>
+                            <option value="acer">acer</option>
+                            <option value="apple">APPLE</option>
+                            <option value="asus">ASUS</option>
+                            <option value="dell">DELL</option>
+                            <option value="hp">HP</option>
+                            <option value="lenovo">Lenovo</option>
+                            <option value="msi">MSI</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inputfield ">
+                    <label for="cpuname">CPU</label>
+                    <div class="custom_select">
+                        <select name="cpuname" id="cpuname">
+                            <option value="" selected hidden>Select</option>
+                            <option value="Core i3">Core i3</option>
+                            <option value="Core i5">Core i5</option>
+                            <option value="Core i7">Core i7</option>
+                            <option value="Core i9">Core i9</option>
+                            <option value="Ryzen 3">Ryzen 3</option>
+                            <option value="Ryzen 5">Ryzen 5</option>
+                            <option value="Ryzen 7">Ryzen 7</option>
+                            <option value="Ryzen 9">Ryzen 9</option>
+                            <option value="M1 Processor">M1 Processor</option>
+                            <option value="M2 Processor">M2 Processor</option>
+                            <option value="M2 Pro">M2 Pro</option>
+                            <option value="M1 Pro">M1 Pro</option>
+                            <option value="M2 Max">M2 Max</option>
+                            <option value="M1 Max">M1 Max</option>
+                            <option value="other">other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inputfield ">
+                    <label for="gpuname">GPU</label>
+                    <div class="custom_select">
+                        <select name="gpuname" id="gpuname">
+                            <option value="" selected hidden>Select</option>
+                            <option value="intel">Intel</option>
+                            <option value="amd">AMD</option>
+                            <option value="Apple">Apple</option>
+                            <option value="MediaTek">MediaTek</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="check ">
+                    <div>
+                        <label for="MsOffice">MS Office</label>
+                        <input type="checkbox" id='ms' name="MsOffice">
+                    </div>
+                </div>
+
+                <div class="inputfield ">
+                    <input class="btn" type="submit" name="myButton" value="Precict Price" onclick="return resetForm(form);">
+                </div>
+        </form>
+
+        <div class="result">
+            {% if pred_value != 0 %}
+            <p class="output">Estimated Price : Rs {{pred_value}}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+</body>
+
+</html>
